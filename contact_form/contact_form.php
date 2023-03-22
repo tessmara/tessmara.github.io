@@ -10,17 +10,8 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 
 // let's do the sending
 
-if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])):
-    //your site secret key
-    $secret = '6LdqmCAUAAAAANONcPUkgVpTSGGqm60cabVMVaON';
-    //get verify response data
-
-    $c = curl_init('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
-    curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
-    $verifyResponse = curl_exec($c);
-
-    $responseData = json_decode($verifyResponse);
-    if($responseData->success):
+if(true):
+    if(true):
 
         try
         {
@@ -59,22 +50,22 @@ if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'
             echo $responseArray['message'];
         }
 
-    else:
-        $errorMessage = 'Robot verification failed, please try again.';
-        $responseArray = array('type' => 'danger', 'message' => $errorMessage);
-        $encoded = json_encode($responseArray);
+    // else:
+    //     $errorMessage = 'Robot verification failed, please try again.';
+    //     $responseArray = array('type' => 'danger', 'message' => $errorMessage);
+    //     $encoded = json_encode($responseArray);
 
-            header('Content-Type: application/json');
+    //         header('Content-Type: application/json');
 
-            echo $encoded;
+    //         echo $encoded;
     endif;
-else:
-    $errorMessage = 'Please click on the reCAPTCHA box.';
-    $responseArray = array('type' => 'danger', 'message' => $errorMessage);
-    $encoded = json_encode($responseArray);
+// else:
+//     $errorMessage = 'Please click on the reCAPTCHA box.';
+//     $responseArray = array('type' => 'danger', 'message' => $errorMessage);
+//     $encoded = json_encode($responseArray);
 
-            header('Content-Type: application/json');
+//             header('Content-Type: application/json');
 
-            echo $encoded;
+//             echo $encoded;
 endif;
 
